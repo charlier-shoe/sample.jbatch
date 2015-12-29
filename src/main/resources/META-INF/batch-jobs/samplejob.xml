@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<job id="samplejob" xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="1.0">
+    <step id="process">
+        <chunk item-count="3">
+            <reader ref="SimpleItemReader">
+                <properties>
+                    <property name="itemNumber" value="10"/>
+                </properties>
+            </reader>
+            <processor ref="SimpleItemProcessor"></processor>
+            <writer ref="SimpleItemWriter"></writer>
+        </chunk>
+    </step>
+</job>

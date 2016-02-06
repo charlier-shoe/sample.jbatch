@@ -4,6 +4,7 @@ import javax.batch.operations.JobOperator;
 import javax.batch.runtime.BatchRuntime;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 
 import jp.gr.java_conf.hhayakawa_jp.sample.jbatch.SampleUtils;
 
@@ -32,6 +33,26 @@ public class JobController {
         JobOperator operator = BatchRuntime.getJobOperator();
         long id = operator.start("samplejob", null);
         return "Started: " + id;
+    }
+
+    /**
+     * 中断したジョブを再開します
+     *
+     * @param id
+     * @return ジョブを再開した旨のメッセージと、ジョブIDを含む文字列
+     */
+    @GET
+    @Path("/Restart")
+    public String restart(@QueryParam("jobid") Long id) {
+        SampleUtils.printCodeLocation();
+        JobOperator operator = BatchRuntime.getJobOperator();
+        // TODO: ジョブが存在しなかったり、中断状態ではない場合での例外処理
+//        JobInstance job = operator.getJobInstance(id);
+//        if (job == null) {
+//            return "job[ " + id + "] does not exist.";
+//        }
+        operator.restart(id, null);
+        return "Restarted: " + id;
     }
 
     /**

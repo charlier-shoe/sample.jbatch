@@ -62,8 +62,10 @@ public class SimpleItemReader implements ItemReader {
         SampleUtils.printCodeLocation();
         itemNumber = Integer.valueOf(itemNumberString);
         if (checkpointInfo != null && checkpointInfo instanceof Integer) {
+            System.out.println("count: " + checkpointInfo);
             this.count = (Integer)checkpointInfo;
         } else {
+            System.out.println("checkpointinfo does not exist.");
             this.count = 0;
         }
     }
@@ -80,6 +82,7 @@ public class SimpleItemReader implements ItemReader {
         if (count >= itemNumber) {
             return null;
         }
+        Thread.sleep(1000 * 5);
         return ++count;
     }
 

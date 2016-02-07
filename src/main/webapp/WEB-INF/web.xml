@@ -17,13 +17,4 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
 
-    <servlet>
-        <servlet-name>JAX-RS Servlet</servlet-name>
-        <servlet-class>weblogic.jaxrs.server.portable.servlet.ServletContainer</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>JAX-RS Servlet</servlet-name>
-        <url-pattern>/jaxrs/*</url-pattern>
-    </servlet-mapping>
-
 </web-app>

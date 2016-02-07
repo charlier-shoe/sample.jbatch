@@ -13,13 +13,13 @@ import jp.gr.java_conf.hhayakawa_jp.sample.jbatch.SampleUtils;
  *
  * @author hhayakaw
  */
-@Path("/JobController")
-public class JobController {
+@Path("/SimpleJobController")
+public class SimpleJobController {
 
     /**
      * デフォルト コンストラクター
      */
-    public JobController() {}
+    public SimpleJobController() {}
 
     /**
      * ジョブを実行します
@@ -31,7 +31,7 @@ public class JobController {
     public String start() {
         SampleUtils.printCodeLocation();
         JobOperator operator = BatchRuntime.getJobOperator();
-        long id = operator.start("samplejob", null);
+        long id = operator.start("simplejob", null);
         return "Started: " + id;
     }
 
